@@ -3,6 +3,6 @@ Create a docker to run open cv 2.4
 
 
 Build the docker image
-'''sh
+```sh
 sudo docker build . --no-cache
-'''
+```
