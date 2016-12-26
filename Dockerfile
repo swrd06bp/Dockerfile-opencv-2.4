@@ -16,6 +16,8 @@ RUN	apt-get update && apt-get install -y \
 		zlib1g-dev libjpeg-dev libwebp-dev libpng-dev libtiff5-dev libjasper-dev libopenexr-dev libgdal-dev \
 		# Media I/O:
 		libdc1394-22-dev libavcodec-dev libavformat-dev libswscale-dev libtheora-dev libvorbis-dev libxvidcore-dev libx264-dev yasm libopencore-amrnb-dev libopencore-amrwb-dev libv4l-dev libxine2-dev \
+		# ffmpeg
+		ffmpeg libav-tools x264 x265 \
 		# Parallelism and linear algebra libraries:
 		libtbb-dev libeigen3-dev \
 		# Python:
