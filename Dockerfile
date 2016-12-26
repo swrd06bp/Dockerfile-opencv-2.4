@@ -1,5 +1,4 @@
-from	ubuntu:16.04
-FROM ubuntu:16.04
+FROM	ubuntu:16.04
 # Ubuntu sides with libav, I side with ffmpeg.
 #RUN	echo "deb http://ppa.launchpad.net/jon-severinsson/ffmpeg/ubuntu quantal main" >> /etc/apt/sources.list
 #RUN	apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 1DB8ADC1CFCA9579
