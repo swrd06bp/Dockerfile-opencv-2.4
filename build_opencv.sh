@@ -1,7 +1,12 @@
-curl -L 'http://sourceforge.net/projects/opencvlibrary/files/opencv-unix/2.4.7/opencv-2.4.7.tar.gz/' | tar xvzf -
-mkdir -p opencv-2.4.7/release
-cd opencv-2.4.7/release
-cmake -D CMAKE_BUILD_TYPE=RELEASE -D CMAKE_INSTALL_PREFIX=/usr/local -D BUILD_PYTHON_SUPPORT=ON -D WITH_XINE=ON -D WITH_TBB=ON ..
-make && make install
-cd /
-rm -rf opencv-2.4.7
+wget https://github.com/opencv/opencv/archive/2.4.10.zip
+unzip 2.4.10.zip
+rm 2.4.10.zip
+mv opencv-2.4.10 OpenCV
+cd OpenCV
+mkdir build
+cd build
+cmake -DWITH_QT=ON -DWITH_OPENGL=ON -DFORCE_VTK=ON -DWITH_TBB=ON -DWITH_GDAL=ON -DWITH_XINE=ON -DBUILD_EXAMPLES=ON ..
+make -j4
+make install
+ldconfig
+

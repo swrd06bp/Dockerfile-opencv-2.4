@@ -5,17 +5,29 @@ FROM	ubuntu:16.04
 
 
 RUN	apt-get update && apt-get install -y \
-		wget curl \
+		# INSTALL THE DEPENDENCIES
+		
+		# Build tools:	
 		build-essential \
 		cmake \
-		python2.7 \
-		python2.7-dev
+		# GUI (if you want to use GTK instead of Qt, replace 'qt5-default' with 'libgtkglext1-dev' and remove '-DWITH_QT=ON' option in CMake):
+		qt5-default libvtk6-dev \
+		# Media I/O:
+		zlib1g-dev libjpeg-dev libwebp-dev libpng-dev libtiff5-dev libjasper-dev libopenexr-dev libgdal-dev \
+		# Media I/O:
+		libdc1394-22-dev libavcodec-dev libavformat-dev libswscale-dev libtheora-dev libvorbis-dev libxvidcore-dev libx264-dev yasm libopencore-amrnb-dev libopencore-amrwb-dev libv4l-dev libxine2-dev \
+		# Parallelism and linear algebra libraries:
+		libtbb-dev libeigen3-dev \
+		# Python:
+		python-dev python-tk python-numpy python3-dev python3-tk python3-numpy \
+		# Java:
+		ant default-jdk \
+		# Documentation:
+		doxygen \
+		# Others
+		unzip wget
 
-RUN	wget 'https://pypi.python.org/packages/2.7/s/setuptools/setuptools-0.6c11-py2.7.egg' && /bin/sh setuptools-0.6c11-py2.7.egg && rm -f setuptools-0.6c11-py2.7.egg
-RUN	curl 'https://bootstrap.pypa.io/get-pip.py' | python2.7
-RUN	pip install numpy
-RUN	apt-get install -y -q libavformat-dev libavcodec-dev libavfilter-dev libswscale-dev
-RUN	apt-get install -y -q libjpeg-dev libpng-dev libtiff-dev libjasper-dev zlib1g-dev libopenexr-dev libxine-dev libeigen3-dev libtbb-dev
-ADD	build_opencv.sh	/build_opencv.sh
+# Add and run build_open cv to install open cv
+ADD	build_opencv.sh /build_opencv.sh
 RUN	/bin/sh /build_opencv.sh
-RUN	rm -rf /build_opencv.sh
+
